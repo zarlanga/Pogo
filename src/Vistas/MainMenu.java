@@ -207,6 +207,10 @@ public class MainMenu extends javax.swing.JFrame {
             jLabelConn.setText("NO CONECTADO A SERVIDOR SQL");
             jLabelConn.setForeground(Color.RED);
         }
+    }
+    
+    public void habilitarBotones(boolean c) {
+        
         jButtonDale.setEnabled(c);
         jButtonTablas.setEnabled(c);
     }

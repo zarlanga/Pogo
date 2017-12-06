@@ -26,6 +26,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelConn" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel2" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -38,19 +45,16 @@
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jTextField1" pref="145" max="32767" attributes="0"/>
+                              <Component id="jTextField1" pref="113" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="jButtonConectar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelConn" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                          <Component id="jButtonCrearTablas" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonConectar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonResetearPogos" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -73,7 +77,11 @@
               <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="241" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="jButtonCrearTablas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="jButtonResetearPogos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="99" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,7 +105,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="localhost:3306/mydb"/>
+        <Property name="text" type="java.lang.String" value="localhost:3306/test"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField2">
@@ -106,9 +114,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="dbdb"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConectar">
       <Properties>
@@ -118,6 +123,16 @@
     <Component class="javax.swing.JLabel" name="jLabelConn">
       <Properties>
         <Property name="text" type="java.lang.String" value="ConnectionStatus"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonCrearTablas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Crear tablas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonResetearPogos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Resetear pogos"/>
       </Properties>
     </Component>
   </SubComponents>

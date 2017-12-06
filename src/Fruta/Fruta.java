@@ -13,21 +13,48 @@ import java.sql.SQLException;
  *
  * boton para conectar y para crear las tablas (y cargar los wachos) (vista aparte?) <-- on it
  *       conneccion (con input) <--- listo
- *      verificar que esten tablas creadas y los personajes cargados
- *      hacer un solo boton que resetee todo a lo pijo?
- *       crear tablas
- *       cargar wachos (en wachos y en anal) (mover todo a frutautil?)
+ * 
+ *   ver en que momento habilitar los botones <---- listoooo <--- mentira, ver como verificar
+*     verificar que esten tablas creadas y los personajes cargados 
+* (si count (*) from wachos == 6?)
+*      si este metodo y connst son true habilitar pogos y tablas
+*          
+*     ordenar cuando se habilitan o no los botones <--- listo para los del setup (no?)
+* 
+*     manejo de excepciones en el controlador (throws)
+*     mostrar mensajes de error y no por consola
+*     ver que puede ir mejor con arraylist en vez de arrays
+*      
+* que muestre un nro del daño que hacen y cambie el tamaño si es crit
+* revisar algoritamo de daño, las i y las j
+* 
+* 
+* array de CRIT con mayuscula
+* valores FINAL en BUACHOS
+* colores para el que gana o pierde?
+*
+*       hacer un solo boton que resetee todo a lo pijo?
+* 
+* 
+*
+ *ver en que momento calcular el ultimo id <---- listo <---- mentiraaaa <--- creo que esta
+ *(validar cuando es 0) <---- esta no? <---- listooooo
+ *(crear un metodo nuevo) <---- listoooo
+ * 
+ *boton para borrar todo de pogo  <---- listooooooo
+ *y los resultados de analwachos (no los personajes) <--- ya estaba, metodo limpiar ved
+ *agregar limpiar porcentajes en analwachos <---- listoooooo
+ *(mandarlo a fruta util tambien?) <---- listoooo 
+ *validar que no divida por 0 al calcular los porcentajes <---- listo 
+ *(rs getint nunca da null??)
+ *crear tablas <---- listoooo
+ *cargar wachos (en wachos y en anal) <---- listoooo
+ *(mover todo a frutautil?) <---- listooo 
+ * 
+ *  
  *
- *      textfield en tablas para hacer selects a medida
- *      (se puede hacer un add al choice que detecte las tablas / campos?
- * 
- * que muestre un nro del daño que hacen
- * revisar algoritamo de daño, las i y las j
- * 
- *
-  * colores para el que gana o pierde?
- * 
- * 
+ *textfield en tablas para hacer selects a medida <---- listo
+ *(se puede hacer un add al choice que detecte las tablas / campos?
  * checkbox para "espera" <------ listoooooooo
  * textfield o algo para cantidad de peleas <----istooooo 
  * *que al iniciar busque la tabla wachos (o muestre vacia) <---- listoooo
@@ -43,8 +70,6 @@ import java.sql.SQLException;
  * como van las distintas  clases? donde las pongo? <----- medio cavernicola mi mvc, pero poneeeeele
  * 
  * 
- ***** CRIT con mayuscula
- ***** valores FINAL en BUACHOS
  ***** tabla ANALPOGO y su trigger <----- mghhhhhhhhhhhh
  *
  * hacer una tabla de combinatorias de personajes? 
@@ -71,7 +96,13 @@ public class Fruta {
      */
     public static void main(String[] args) throws SQLException {
 //        Frutautil f = new Frutautil();
-//        f.conectarse();
+//        f.conectarse("localhost:3306/test","root","");
+//        f.mandarSQL("delete from test.analwachos");
+//        f.mandarSQL("delete from test.pogo");
+//        f.mandarSQL("delete from wachos");
+
+//        f.limpiarVED();
+//        f.resetearPogos();
 //        f.mandarSQL("CREATE TABLE analwachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), victorias int (20), empates int (20), derrotas int (20) , pogos int (20), porcV int(20), porcE int(20), porcD int(20));");
 
 

@@ -28,19 +28,18 @@ public class Frutautil {
     public void conectarse() throws SQLException {
 
 //        try {
-            
-            conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/mydb", "root", "");//????
-                    //"jdbc:mysql://localhost:3306/mydb", "root", "dbdb");//????
-            //"jdbc:mysql://sql10.freemysqlhosting.net/sql10184095",
-            //"sql10184095",
-            //"Kn1NMAyzIh"
+        conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/mydb", "root", "");//????
+        //"jdbc:mysql://localhost:3306/mydb", "root", "dbdb");//????
+        //"jdbc:mysql://sql10.freemysqlhosting.net/sql10184095",
+        //"sql10184095",
+        //"Kn1NMAyzIh"
 
-            System.out.println("pudo conectar a la DB");
-            System.out.println(conn.isValid(0));
+        System.out.println("pudo conectar a la DB");
+        System.out.println(conn.isValid(0));
 
-            sta = conn.createStatement(1003, 1008);
-            sta1 = conn.createStatement(1003, 1008);
+        sta = conn.createStatement(1003, 1008);
+        sta1 = conn.createStatement(1003, 1008);
         /*
         } catch (SQLException ex) {
             // handle the error
@@ -57,19 +56,18 @@ public class Frutautil {
     public void conectarse(String sv, String user, String pass) throws SQLException {
 
 //        try {
-            
-            conn = DriverManager.getConnection(
-                    "jdbc:mysql://" + sv, user, pass);//????
-                    //"jdbc:mysql://localhost:3306/mydb", "root", "dbdb");//????
-            //"jdbc:mysql://sql10.freemysqlhosting.net/sql10184095",
-            //"sql10184095",
-            //"Kn1NMAyzIh"
+        conn = DriverManager.getConnection(
+                "jdbc:mysql://" + sv, user, pass);//????
+        //"jdbc:mysql://localhost:3306/mydb", "root", "dbdb");//????
+        //"jdbc:mysql://sql10.freemysqlhosting.net/sql10184095",
+        //"sql10184095",
+        //"Kn1NMAyzIh"
 
-            System.out.println("pudo conectar a la DB");
-            System.out.println(conn.isValid(0));
+        System.out.println("pudo conectar a la DB");
+        System.out.println(conn.isValid(0));
 
-            sta = conn.createStatement(1003, 1008);
-            sta1 = conn.createStatement(1003, 1008);
+        sta = conn.createStatement(1003, 1008);
+        sta1 = conn.createStatement(1003, 1008);
         /*
         } catch (SQLException ex) {
             // handle the error
@@ -82,16 +80,16 @@ public class Frutautil {
         } */
 
     }
-    
+
     void crearTablas() {
-        
-            mandarSQL("CREATE TABLE pogo (id int(20) PRIMARY KEY, p1 VARCHAR(20), hp1 int (20), d1 int (20), d2 int (20) , hp2 int (20), p2 VARCHAR(20) );");
-            mandarSQL("CREATE TABLE wachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), hp int (20), daño1 int (20), velocidad1 int (20) , daño2 int (20), velocidad2 int (20), armadura int (20) );");
-            mandarSQL("CREATE TABLE analwachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), victorias int (20), empates int (20), derrotas int (20) , pogos int (20), porcV int(20), porcE int(20), porcD int(20));");
+
+        mandarSQL("CREATE TABLE pogo (id int(20) PRIMARY KEY, p1 VARCHAR(20), hp1 int (20), d1 int (20), d2 int (20) , hp2 int (20), p2 VARCHAR(20) );");
+        mandarSQL("CREATE TABLE wachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), hp int (20), daño1 int (20), velocidad1 int (20) , daño2 int (20), velocidad2 int (20), armadura int (20) );");
+        mandarSQL("CREATE TABLE analwachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), victorias int (20), empates int (20), derrotas int (20) , pogos int (20), porcV int(20), porcE int(20), porcD int(20));");
 
     }
-    
-        void cargarPersonajes() {
+
+    void cargarPersonajes() {
         try {
             String ins;
 //            rs1 = sta.executeQuery("SELECT * FROM wachos");
@@ -114,9 +112,74 @@ public class Frutautil {
         }
 
     }
+
+    public void cargarBuachosAnal() {
+        try {
+
+            rs1 = sta.executeQuery("SELECT nombre, id FROM wachos");
+            //System.out.println("cargobuachos");
+            rs1.last();
+            String[] nw = new String[rs1.getRow()];
+            rs1.absolute(1);
+            for (int i = 0; i < nw.length; i++) {
+                nw[i] = rs1.getString("nombre");
+                rs1.next();
+            }
+            rs1 = sta.executeQuery("SELECT * FROM analwachos");
+            rs1.moveToInsertRow();
+            for (int i = 0; i < nw.length; i++) {
+
+                rs1.updateInt("id", i + 1);
+                rs1.updateString("nombre", nw[i]);
+                rs1.insertRow();
+            }
+
+        } catch (SQLException ex) {
+            // handle the error
+            System.out.println("kk");
+
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+
+        }
+    }
     
+    public void resetearPogos() {
+        mandarSQL("DELETE from POGO");
+    }
+    
+        public void limpiarVED() {
+        try {
+
+            rs1 = sta1.executeQuery("SELECT * FROM analwachos");
+
+            while (rs1.next()) {
+                //f.rs1.deleteRow();
+
+                rs1.updateInt(3, 0);
+                rs1.updateInt(4, 0);
+                rs1.updateInt(5, 0);
+                rs1.updateInt(6, 0);
+                rs1.updateInt(7, 0);
+                rs1.updateInt(8, 0);
+                rs1.updateInt(9, 0);
+                rs1.updateRow();
+            }
+
+        } catch (SQLException ex) {
+            // handle the error
+            System.out.println("kk");
+
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+
+        }
+    }
+
     ResultSet hacerQuery(String testo) {
-        try{ 
+        try {
             return sta.executeQuery(testo);
         } catch (SQLException ex) {
             // handle the error
@@ -129,9 +192,9 @@ public class Frutautil {
 
         }
     }
-    
+
     void mandarSQL(String testo) {
-        try{ 
+        try {
             sta.execute(testo);
         } catch (SQLException ex) {
             // handle the error
@@ -140,18 +203,15 @@ public class Frutautil {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-            
 
         }
     }
 
-
-    
-        String crearTestoValues(String tabla) {
+    String crearTestoValues(String tabla) {
 
         String testo = "";
         try {
-            rs1= sta.executeQuery("SELECT * FROM " + tabla + " LIMIT 1 ");
+            rs1 = sta.executeQuery("SELECT * FROM " + tabla + " LIMIT 1 ");
             testo = "INSERT INTO " + rs1.getMetaData().getTableName(1) + " (";
 
             testo += rs1.getMetaData().getColumnLabel(1);
@@ -161,7 +221,6 @@ public class Frutautil {
             }
 
             testo += ") VALUE ('";
-            
 
         } catch (SQLException ex) {
             // handle the error
@@ -178,7 +237,6 @@ public class Frutautil {
     }
 
 }
-
 
 //    public void armarPogo() {
 //        Buacho[] bu = elegirWachos();

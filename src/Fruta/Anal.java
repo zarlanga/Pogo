@@ -127,12 +127,14 @@ public class Anal {
         try {
             f.rs1 = f.hacerQuery("select * FROM analwachos");
             while (f.rs1.next()) {
+                if (  f.rs1.getInt("pogos") != 0) { // <--- que pasa con los nulls?
                 f.rs1.updateInt("porcV", 100 * f.rs1.getInt("victorias") / f.rs1.getInt("pogos"));
 //                System.out.println(100 * f.rs1.getInt("victorias") / f.rs1.getInt("pogos"));
                 f.rs1.updateInt("porcE", 100 * f.rs1.getInt("empates") / f.rs1.getInt("pogos"));
                 f.rs1.updateInt("porcD", 100 * f.rs1.getInt("derrotas") / f.rs1.getInt("pogos"));
                 f.rs1.updateRow();
 //                System.out.println("kheondavatooo?");
+                }
 
             }
         } catch (SQLException ex) {
@@ -147,31 +149,7 @@ public class Anal {
 
     }
 
-    public void limpiarVED() {
-        try {
 
-            f.rs1 = f.sta1.executeQuery("SELECT * FROM analwachos");
-
-            while (f.rs1.next()) {
-                //f.rs1.deleteRow();
-
-                f.rs1.updateInt(3, 0);
-                f.rs1.updateInt(4, 0);
-                f.rs1.updateInt(5, 0);
-                f.rs1.updateInt(6, 0);
-                f.rs1.updateRow();
-            }
-
-        } catch (SQLException ex) {
-            // handle the error
-            System.out.println("kk");
-
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-
-        }
-    }
 
     public void calcularVED(String idAsDes) {
         try {
@@ -234,37 +212,7 @@ public class Anal {
         //return f.rsp;
     }
 
-    public void cargarBuachosAnal() {
-        try {
+    
 
-            f.rs1 = f.sta.executeQuery("SELECT nombre, id FROM wachos");
-            //System.out.println("cargobuachos");
-            f.rs1.last();
-            String[] nw = new String[f.rs1.getRow()];
-            f.rs1.absolute(1);
-            for (int i = 0; i < nw.length; i++) {
-                nw[i] = f.rs1.getString("nombre");
-                f.rs1.next();
-            }
-            f.rs1 = f.sta.executeQuery("SELECT * FROM analwachos");
-            f.rs1.moveToInsertRow();
-            for (int i = 0; i < nw.length; i++) {
-
-                f.rs1.updateInt("id", i + 1);
-                f.rs1.updateString("nombre", nw[i]);
-                f.rs1.insertRow();
-            }
-
-        } catch (SQLException ex) {
-            // handle the error
-            System.out.println("kk");
-
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-
-        }
-
-    }
-
+    
 }

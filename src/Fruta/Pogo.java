@@ -43,7 +43,7 @@ public class Pogo {
         try {
             f.conectarse();
             connST=true;
-            proximoID = ultimoID() + 1;
+            //proximoID = ultimoID() + 1;
             vM.iniciar(connST);
         } catch (SQLException e) {
             vM.iniciar(connST);
@@ -109,10 +109,11 @@ public class Pogo {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("laconchadetumadreallboyssss");
+            //System.out.println("laconchadetumadreallboyssss");
+            proximoID = ultimoID() + 1;
             pogoRandom(vM.getCantidadDeVeces());
 
-            System.out.println("lamadredetuconchalboyysss");
+            //System.out.println("lamadredetuconchalboyysss");
         }
 
     }
@@ -123,7 +124,38 @@ public class Pogo {
             vS.iniciar();
             vS.setConnStatus(connST);
             vS.addConectarHandler(new sConectarHandler());
+            vS.addCrearTablasHandler(new sCrearTablas());
+            vS.addResetearPogosHandler(new sResetearPogos());
+            vS.habilitarBotonCrearTablas(connST); // <---- hacer metodo para verificar
+            vS.habilitarBotonResetearPogos(connST);
         }
+    }
+    
+    public class sResetearPogos implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            f.limpiarVED();
+            f.resetearPogos();
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
+    
+    public class sCrearTablas implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            f.crearTablas();
+            f.cargarPersonajes();
+            f.cargarBuachosAnal();
+            //proximoID = ultimoID() + 1; // esto tiraba error la primera vez? validar
+            vM.habilitarBotones(true);
+            
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
     }
     
     public class sConectarHandler implements ActionListener{
@@ -133,9 +165,11 @@ public class Pogo {
             try {
                 f.conectarse(vS.getText1(), vS.getText2(), vS.getText3());
                 connST=true;
-                proximoID = ultimoID() + 1;
+                
                 vM.setConnStatus(connST);
                 vS.setConnStatus(connST);
+                vS.habilitarBotonCrearTablas(connST);
+                vS.habilitarBotonResetearPogos(connST);
             
                 
             
@@ -324,8 +358,12 @@ public class Pogo {
         try {
 
             f.rsp = f.sta.executeQuery("SELECT id FROM pogo ORDER BY id DESC LIMIT 1");//dudoso
-            f.rsp.next();//dudoso
+            if (f.rsp.next()) {
+            
             return f.rsp.getInt(1);//dudoso
+            } else {
+                return 0;
+            }
 
         } catch (SQLException ex) {
             // handle the error

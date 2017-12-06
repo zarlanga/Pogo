@@ -42,6 +42,8 @@ public class Setup extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButtonConectar = new javax.swing.JButton();
         jLabelConn = new javax.swing.JLabel();
+        jButtonCrearTablas = new javax.swing.JButton();
+        jButtonResetearPogos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,15 +53,17 @@ public class Setup extends javax.swing.JFrame {
 
         jLabel2.setText("jdbc:mysql://");
 
-        jTextField1.setText("localhost:3306/mydb");
+        jTextField1.setText("localhost:3306/test");
 
         jTextField2.setText("root");
-
-        jTextField3.setText("dbdb");
 
         jButtonConectar.setText("Conectar");
 
         jLabelConn.setText("ConnectionStatus");
+
+        jButtonCrearTablas.setText("Crear tablas");
+
+        jButtonResetearPogos.setText("Resetear pogos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,6 +72,11 @@ public class Setup extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabelConn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -78,15 +87,13 @@ public class Setup extends javax.swing.JFrame {
                                     .addComponent(jTextField3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                                 .addGap(25, 25, 25)))
-                        .addComponent(jButtonConectar)
-                        .addGap(51, 51, 51))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabelConn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jButtonCrearTablas)
+                            .addComponent(jButtonConectar)
+                            .addComponent(jButtonResetearPogos))
+                        .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +111,11 @@ public class Setup extends javax.swing.JFrame {
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jButtonCrearTablas)
+                .addGap(48, 48, 48)
+                .addComponent(jButtonResetearPogos)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,6 +161,24 @@ public class Setup extends javax.swing.JFrame {
         jButtonConectar.addActionListener(a);
     }
     
+    public void addCrearTablasHandler(ActionListener a) {
+        jButtonCrearTablas.addActionListener(a);
+    }
+    
+    public void habilitarBotonCrearTablas(boolean b) {
+        jButtonCrearTablas.setEnabled(b);
+    }
+    
+    public void addResetearPogosHandler (ActionListener a ) {
+        jButtonResetearPogos.addActionListener(a);
+    }
+    
+    public void habilitarBotonResetearPogos(boolean b) {
+        jButtonResetearPogos.setEnabled(b);
+    }
+            
+    
+    
     public void setConnStatus(boolean c) {
         if (c) {
             jLabelConn.setText("CONECTADO A SERVIDOR SQL");
@@ -174,6 +203,8 @@ public class Setup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConectar;
+    private javax.swing.JButton jButtonCrearTablas;
+    private javax.swing.JButton jButtonResetearPogos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelConn;
