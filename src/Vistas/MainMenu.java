@@ -27,7 +27,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void iniciar(boolean connSt) {
         this.setConnStatus(connSt);
-        this.habilitarBotones(connSt);
+       // this.habilitarBotones(connSt);
         this.setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -200,6 +200,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void setConnStatus(boolean c) {
+        habilitarBotones(c);
         if (c) {
             jLabelConn.setText("CONECTADO A SERVIDOR SQL");
             jLabelConn.setForeground(Color.GREEN);

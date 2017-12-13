@@ -144,12 +144,12 @@ public class Frutautil {
 
         }
     }
-    
+
     public void resetearPogos() {
         mandarSQL("DELETE from POGO");
     }
-    
-        public void limpiarVED() {
+
+    public void limpiarVED() {
         try {
 
             rs1 = sta1.executeQuery("SELECT * FROM analwachos");

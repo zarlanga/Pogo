@@ -169,7 +169,7 @@ public class Pogo {
                 connST=true;
                 
                 vM.setConnStatus(connST);
-                vM.habilitarBotones(connST);
+             //   vM.habilitarBotones(connST);
                 vS.setConnStatus(connST);
                 vS.habilitarBotonCrearTablas(connST);
                 vS.habilitarBotonResetearPogos(connST);

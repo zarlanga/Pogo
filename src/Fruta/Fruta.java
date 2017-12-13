@@ -94,7 +94,7 @@ public class Fruta {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args)  {
 //        Frutautil f = new Frutautil();
 //        f.conectarse("localhost:3306/test","root","");
 //        f.mandarSQL("delete from test.analwachos");
