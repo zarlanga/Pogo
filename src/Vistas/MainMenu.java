@@ -27,7 +27,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void iniciar(boolean connSt) {
         this.setConnStatus(connSt);
-        
+        this.habilitarBotones(connSt);
         this.setLocationRelativeTo(null);
         setVisible(true);
     }
