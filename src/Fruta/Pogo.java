@@ -45,8 +45,10 @@ public class Pogo {
             connST=true;
             //proximoID = ultimoID() + 1;
             vM.iniciar(connST);
+            System.out.println("entro "+ connST );
         } catch (SQLException e) {
             vM.iniciar(connST);
+            System.out.println("no entro "+ connST );
 
         } finally {
             vM.addDaleHandler(new DaleHandler());
@@ -167,6 +169,7 @@ public class Pogo {
                 connST=true;
                 
                 vM.setConnStatus(connST);
+                vM.habilitarBotones(connST);
                 vS.setConnStatus(connST);
                 vS.habilitarBotonCrearTablas(connST);
                 vS.habilitarBotonResetearPogos(connST);
