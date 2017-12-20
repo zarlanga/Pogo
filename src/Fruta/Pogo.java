@@ -42,13 +42,13 @@ public class Pogo {
 //        vM.setConnStatus();
         try {
             f.conectarse();
-            connST=true;
+            connST = true;
             //proximoID = ultimoID() + 1;
             vM.iniciar(connST);
-            System.out.println("entro "+ connST );
+            System.out.println("entro " + connST);
         } catch (SQLException e) {
             vM.iniciar(connST);
-            System.out.println("no entro "+ connST );
+            System.out.println("no entro " + connST);
 
         } finally {
             vM.addDaleHandler(new DaleHandler());
@@ -69,16 +69,16 @@ public class Pogo {
         }
 
     }
-    
+
     public class QueryHandler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             elegirTablaQ(vT.getTextQ());
         }
-    
+
     }
-    
+
     public void elegirTablaQ(String query) {
         String[] campos = a.getCamposQ(query);
         Object[][] matriz = a.getMatrizQ(query); //new Object[campos.length][0]; 
@@ -96,8 +96,6 @@ public class Pogo {
         }
 
     }
-    
-    
 
     public void elegirTabla(String tabla) {
         String[] campos = a.getCampos(tabla);
@@ -119,8 +117,9 @@ public class Pogo {
         }
 
     }
-    
+
     public class SetupHandler implements ActionListener {
+
         public void actionPerformed(ActionEvent e) {
             vS = new Setup();
             vS.iniciar();
@@ -132,19 +131,18 @@ public class Pogo {
             vS.habilitarBotonResetearPogos(connST);
         }
     }
-    
+
     public class sResetearPogos implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             f.limpiarVED();
             f.resetearPogos();
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
+
     }
-    
-    
+
     public class sCrearTablas implements ActionListener {
 
         @Override
@@ -154,26 +152,26 @@ public class Pogo {
             f.cargarBuachosAnal();
             //proximoID = ultimoID() + 1; // esto tiraba error la primera vez? validar
             vM.habilitarBotones(true);
-            
+
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
+
     }
-    
-    public class sConectarHandler implements ActionListener{
+
+    public class sConectarHandler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
                 f.conectarse(vS.getText1(), vS.getText2(), vS.getText3());
-                connST=true;
-                
+                connST = true;
+
                 vM.setConnStatus(connST);
-             //   vM.habilitarBotones(connST);
+                //   vM.habilitarBotones(connST);
                 vS.setConnStatus(connST);
                 vS.habilitarBotonCrearTablas(connST);
                 vS.habilitarBotonResetearPogos(connST);
-            
+
                 
             
             } catch (SQLException ex) {
@@ -181,7 +179,7 @@ public class Pogo {
             }
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
+
     }
 
 //alpedooooo vvvvvvv
@@ -239,6 +237,7 @@ public class Pogo {
 //        f.rsp=f.sta.executeQuery("SELECT * FROM pogo LIMIT 1");
         String testo = f.crearTestoValues("pogo");
 //        System.out.println("testo:" + testo);
+        vM.cambiarColorPersonajes(0);
         while (buachos[0].getHP() > 0 && buachos[1].getHP() > 0) {
             int[] da = new int[]{0, 0};
             for (int i = 0; i < 2; i++) {
@@ -249,6 +248,7 @@ public class Pogo {
                     }
 
                 }
+                vM.setLabelText(da[i] + "", i);
                 buachos[i].getRiv().recibirPalo(da[i]); // <------- esto no hace que cada uno reciba su propio daño? revisarrrrrrr
             }
             String elResto = proximoID + "', '" + buachos[0].getNombre() + "', '" + buachos[0].getHP() + "', '"
@@ -256,8 +256,8 @@ public class Pogo {
                     + "');";
 //            System.out.println(testo + elResto);
             f.mandarSQL(testo + elResto);
-            System.out.println(proximoID + "|" + buachos[0].getNombre() + "|" + buachos[0].getHP()
-                    + "|" + buachos[1].getHP() + "|" + buachos[1].getNombre());
+//            System.out.println(proximoID + "|" + buachos[0].getNombre() + "|" + buachos[0].getHP()
+//                    + "|" + buachos[1].getHP() + "|" + buachos[1].getNombre());
 
             vM.setPB1Value((int) buachos[0].getHP());
             vM.setPB2Value((int) buachos[1].getHP());
@@ -267,7 +267,7 @@ public class Pogo {
             if (!vM.getTurbo()) {
                 try {
                     System.out.println("proximoid" + proximoID);
-                    Thread.sleep(300);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
 
                 }
@@ -279,6 +279,18 @@ public class Pogo {
 
                 }
             }
+
+        }
+        if (buachos[0].getHP() > 0) {
+            vM.cambiarColorPersonajes(1);
+        } else if (buachos[1].getHP() > 0) {
+            vM.cambiarColorPersonajes(2);
+        } else {
+            vM.cambiarColorPersonajes(3);
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
 
         }
     }
@@ -362,8 +374,8 @@ public class Pogo {
 
             f.rsp = f.sta.executeQuery("SELECT id FROM pogo ORDER BY id DESC LIMIT 1");//dudoso
             if (f.rsp.next()) {
-            
-            return f.rsp.getInt(1);//dudoso
+
+                return f.rsp.getInt(1);//dudoso
             } else {
                 return 0;
             }
