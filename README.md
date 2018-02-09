@@ -6,7 +6,7 @@ tabla wachos: personajes y sus valores de vida daño y armadura
 
 tabla pogo: registra cada turno de peleas entre personajes elegidos al azar
 
-tabla analwachos: analisis de victorias empates y derrotas con sus respectivos porcentajes
+tabla analisiswachos: analisis de victorias empates y derrotas con sus respectivos porcentajes
 
 eventualmente habra mas analisis estadisticos,
 
