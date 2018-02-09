@@ -11,12 +11,12 @@ import java.sql.SQLException;
  *
  * @author Alumno
  */
-public class Anal {
+public class Analisis {
 
     Frutautil f;
 //    int desdeID;
 
-    Anal(Frutautil fru) {
+    Analisis(Frutautil fru) {
         f = fru;
 
     }
@@ -125,7 +125,7 @@ public class Anal {
 
     public void calcularPorc() {
         try {
-            f.rs1 = f.hacerQuery("select * FROM analwachos");
+            f.rs1 = f.hacerQuery("select * FROM analisiswachos");
             while (f.rs1.next()) {
                 if (  f.rs1.getInt("pogos") != 0) { // <--- que pasa con los nulls?
                 f.rs1.updateInt("porcV", 100 * f.rs1.getInt("victorias") / f.rs1.getInt("pogos"));
@@ -157,7 +157,7 @@ public class Anal {
             System.out.println("1");
             f.rsp = f.sta.executeQuery("SELECT p1, p2, hp1, hp2 FROM pogo WHERE id " + idAsDes + " AND (hp1 <= 0 OR hp2 <= 0)");
             System.out.println("2");
-            f.rs1 = f.sta1.executeQuery("SELECT * FROM analwachos");
+            f.rs1 = f.sta1.executeQuery("SELECT * FROM analisiswachos");
             System.out.println("3");
             while (f.rsp.next()) {
                 f.rs1.beforeFirst();

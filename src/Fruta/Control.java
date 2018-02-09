@@ -18,10 +18,10 @@ import vistas.Tablas;
  *
  * @author Alumno
  */
-public class Pogo {
+public class Control {
 
     Frutautil f;
-    Anal a;
+    Analisis a;
     Buacho[] buachos;
     int proximoID;
     boolean connST = false;
@@ -29,9 +29,9 @@ public class Pogo {
     Tablas vT;
     Setup vS;
 
-    public Pogo() {
+    public Control() {
         this.f = new Frutautil(); //esto se hace asi?
-        a = new Anal(f);
+        a = new Analisis(f);
         this.buachos = new Buacho[2];
         vM = new MainMenu();
 

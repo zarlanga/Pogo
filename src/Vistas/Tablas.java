@@ -27,8 +27,8 @@ public class Tablas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         choiceTablas.add("Wachos");
-        choiceTablas.add("Analwachos");
-        choiceTablas.add("pogo");
+        choiceTablas.add("AnalisisWachos");
+        choiceTablas.add("Pogo");
 //        choiceTablas.add("Combinatoria"); // <--- agregar otro choice?
 //        choiceTablas.add("Pogos");
         choiceTablas.getItem(1);

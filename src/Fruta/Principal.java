@@ -89,7 +89,7 @@ import java.sql.SQLException;
  *
  * @author Alumno
  */
-public class Fruta {
+public class Principal {
 
     /**
      * @param args the command line arguments
@@ -108,7 +108,7 @@ public class Fruta {
 
 //        f.mandarSQL("DELETE FROM pogo");
       
-        Pogo p = new Pogo();
+        Control p = new Control();
         p.iniciar();
 //        p.pogoRandom1();
 //        p.pogoRandom2();

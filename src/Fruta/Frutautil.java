@@ -85,7 +85,7 @@ public class Frutautil {
 
         mandarSQL("CREATE TABLE pogo (id int(20) PRIMARY KEY, p1 VARCHAR(20), hp1 int (20), d1 int (20), d2 int (20) , hp2 int (20), p2 VARCHAR(20) );");
         mandarSQL("CREATE TABLE wachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), hp int (20), daño1 int (20), velocidad1 int (20) , daño2 int (20), velocidad2 int (20), armadura int (20) );");
-        mandarSQL("CREATE TABLE analwachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), victorias int (20), empates int (20), derrotas int (20) , pogos int (20), porcV int(20), porcE int(20), porcD int(20));");
+        mandarSQL("CREATE TABLE analisiswachos (id int(20) PRIMARY KEY, nombre VARCHAR(20), victorias int (20), empates int (20), derrotas int (20) , pogos int (20), porcV int(20), porcE int(20), porcD int(20));");
 
     }
 
@@ -125,7 +125,7 @@ public class Frutautil {
                 nw[i] = rs1.getString("nombre");
                 rs1.next();
             }
-            rs1 = sta.executeQuery("SELECT * FROM analwachos");
+            rs1 = sta.executeQuery("SELECT * FROM analisiswachos");
             rs1.moveToInsertRow();
             for (int i = 0; i < nw.length; i++) {
 
@@ -152,7 +152,7 @@ public class Frutautil {
     public void limpiarVED() {
         try {
 
-            rs1 = sta1.executeQuery("SELECT * FROM analwachos");
+            rs1 = sta1.executeQuery("SELECT * FROM analisiswachos");
 
             while (rs1.next()) {
                 //f.rs1.deleteRow();
